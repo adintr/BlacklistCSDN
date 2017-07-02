@@ -18,7 +18,18 @@ function mark_blacks_on_formlist() {
 }
 
 function mark_blacks_on_topic() {
-
+    $(".detailed").find('table').each(function (i, e) {
+        ele = $(e);
+        replayer = ele.find('.username a');
+        replayname = replayer.text();
+        if(is_black_user(replayname)) {
+            replayer.css("color", "red");
+            ele.find(".nickname").css("color", "red");
+            ele.find('.data').css("background", "#c00000");
+            ele.find('.post_body').css("background", "#c05050");
+            ele.find('.user_info').css("background", "#c09090");
+        }
+    })
 }
 
 if(location.href.indexOf('forums') != -1)
