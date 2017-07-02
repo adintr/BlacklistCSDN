@@ -1,0 +1,20 @@
+{
+  "name": "CSDNBlackList",
+  "version": "1.0",
+  "manifest_version": 2,
+  "description": "为 CSDN 提供黑名单功能",
+  "permissions": [
+    "contextMenus"
+  ],
+
+  "icons": {
+    "48": "images/csdn-blacklist-icon.png"
+  },
+
+  "homepage_url": "http://www.adintr.com",
+  "browser_action": {
+    "default_icon": "images/csdn-blacklist-icon.png",
+    "default_title": "CSDN 黑名单",
+    "default_popup": "htmls/popup.html"
+  }
+}
