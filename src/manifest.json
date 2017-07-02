@@ -4,7 +4,8 @@
   "manifest_version": 2,
   "description": "为 CSDN 提供黑名单功能",
   "permissions": [
-    "tabs", "http://bbs.csdn.net/*",
+    "tabs",
+    "http://bbs.csdn.net/*",
     "contextMenus"
   ],
 
@@ -20,6 +21,10 @@
       "run_at": "document_idle"
     }
   ],
+
+  "background": {
+    "scripts": ["js/context_menu.js"]
+  },
 
   "homepage_url": "http://www.adintr.com",
   "browser_action": {
