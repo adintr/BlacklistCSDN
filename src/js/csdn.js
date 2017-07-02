@@ -1,5 +1,11 @@
+var global_black_list = [];
+
 function is_black_user(username) {
-    return username == "zjl13595325243" || username == "ipqtjmqj";
+    return global_black_list.indexOf(username) != -1;
+}
+
+function add_to_black(username) {
+    alert("将 " + username + " 加入黑名单.");
 }
 
 function mark_blacks_on_formlist() {
@@ -29,14 +35,21 @@ function mark_blacks_on_topic() {
             ele.find('.post_body').css("background", "#c05050");
             ele.find('.user_info').css("background", "#c09090");
         }
+        else {
+            ele.find('.user_info').append('<dd><button style="color:red;" onclick="add_to_black(\'' + replayname + '\');">加入黑名单</button></dd>')
+        }
     })
 }
 
-if(location.href.indexOf('forums') != -1)
-{
-    mark_blacks_on_formlist();
-}
-else if(location.href.indexOf('topics') != -1)
-{
-    mark_blacks_on_topic();
-}
+chrome.extension.sendRequest({command: "getBlackList"}, function(response) {
+    global_black_list = response.data;
+
+    if(location.href.indexOf('forums') != -1) {
+        mark_blacks_on_formlist();
+    }
+    else if(location.href.indexOf('topics') != -1) {
+        mark_blacks_on_topic();
+    }
+});
+
+
