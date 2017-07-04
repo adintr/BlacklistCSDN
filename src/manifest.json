@@ -26,7 +26,7 @@
   ],
 
   "background": {
-    "scripts": ["js/context_menu.js", "js/msglistener.js"]
+    "scripts": ["js/json2.js", "js/msglistener.js", "js/context_menu.js"]
   },
 
   "homepage_url": "http://www.adintr.com",

@@ -1,7 +1,12 @@
 var global_black_list = [];
 
+if(localStorage["black_list"] && localStorage["black_list"] != "") {
+    global_black_list = JSON.parse(localStorage["black_list"]);
+}
+
 function add_black_user_and_save(username) {
     global_black_list.push(username);
+    localStorage["black_list"] = JSON.stringify(global_black_list);
 }
 
 chrome.extension.onRequest.addListener(
