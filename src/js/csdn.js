@@ -1,11 +1,20 @@
 var global_black_list = [];
+var global_id = 1;
 
 function is_black_user(username) {
     return global_black_list.indexOf(username) != -1;
 }
 
 function add_to_black(username) {
-    alert("将 " + username + " 加入黑名单.");
+    if(confirm("将 " + username + " 加入黑名单? ")) {
+        chrome.extension.sendRequest({command: "addBlackUser", username: username },
+            function(response) {
+                if(response.success) {
+                    location.reload();
+                }
+            }
+        );
+    }
 }
 
 function mark_blacks_on_formlist() {
@@ -36,7 +45,9 @@ function mark_blacks_on_topic() {
             ele.find('.user_info').css("background", "#c09090");
         }
         else {
-            ele.find('.user_info').append('<dd><button style="color:red;" onclick="add_to_black(\'' + replayname + '\');">加入黑名单</button></dd>')
+            ele.find('.user_info').append('<dd><button style="color:red;" id="btn_addblack_' + global_id + '" value="' + replayname + '">加入黑名单</button></dd>');
+            $("#btn_addblack_" + global_id).click(function(){ add_to_black($(this).val()); });
+            global_id++;
         }
     })
 }

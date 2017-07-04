@@ -1,16 +1,13 @@
+var global_black_list = [];
 
 chrome.extension.onRequest.addListener(
     function(request, sender, sendResponse) {
-        alert(request);
         if (request.command == "getBlackList") {
-            sendResponse({data: ["zjl13595325243", "ipqtjmqj"]});
+            sendResponse({data: global_black_list });
         }
-    }
-);
-
-chrome.runtime.onMessage.addListener(
-    function(request, sender, sendRequest){
-        alert(request);
-        sendRequest({success: true});
+        else if(request.command == "addBlackUser") {
+            global_black_list.push(request.username);
+            sendResponse({success: true});
+        }
     }
 );
