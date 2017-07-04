@@ -1,8 +1,20 @@
-function onClickUserLink(info, tab) {
-    alert(info.linkUrl);
+
+function add_to_black(username) {
+    if(confirm("将 " + username + " 加入黑名单? ")) {
+        add_black_user_and_save(username);
+        chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+            chrome.tabs.reload(tabs[0].id);
+        });
+    }
 }
+
+function onClickUserLink(info, tab) {
+    var names = info.linkUrl.split("/");
+    add_to_black(names.pop());
+}
+
 function onClickSelectText(info, tab) {
-    alert(info.selectionText);
+    add_to_black(info.selectionText);
 }
 
 chrome.contextMenus.create(
