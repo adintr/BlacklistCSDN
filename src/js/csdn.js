@@ -55,7 +55,9 @@ function mark_blacks_on_topic() {
 chrome.extension.sendRequest({command: "getBlackList"}, function(response) {
     global_black_list = response.data;
 
-    if(location.href.indexOf('forums') != -1) {
+    if(location.href.indexOf('forums') != -1
+        || location.href.indexOf('user/replied_topics') != -1
+        || location.href.indexOf('user/pointed_topics') != -1) {
         mark_blacks_on_formlist();
     }
     else if(location.href.indexOf('topics') != -1) {
