@@ -1,9 +1,9 @@
 var global_black_list = [];
 
-Array.prototype.removeByValue = function(val) {
-    for(var i=0; i<this.length; i++) {
-        if(this[i] == val) {
-            this.splice(i, 1);
+function removeByValue(array, val) {
+    for(var i=0; i<array.length; i++) {
+        if(array[i] == val) {
+            array.splice(i, 1);
             break;
         }
     }
@@ -26,7 +26,7 @@ function add_black_user_and_save(username) {
 
 function deleteBloackUser(username) {
     if(confirm("从黑名单中删除 " + username + " ?")) {
-        global_black_list.removeByValue(username);
+        removeByValue(global_black_list, username);
         saveBlackList();
         return true;
     }
