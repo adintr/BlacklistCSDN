@@ -25,7 +25,7 @@ $(document).ready(function () {
     $("#getfromWeb").click(function() {
         $.ajax({
             type: "GET",
-            url: $("#syncurl").val(),
+            url: "http://www.adintr.com/config/csdnblack_" + $("#syncurl").val(),
             dataType: "json",
             success: function(json) {
                 bg.global_black_list = json;
@@ -41,7 +41,7 @@ $(document).ready(function () {
     $("#sendtoweb").click(function () {
         $.ajax({
             type: "GET",
-            url: $("#syncurl").val() + "/" + $.toJSON(bg.global_black_list),
+            url: "http://www.adintr.com/config/csdnblack_" + $("#syncurl").val() + "/" + $.toJSON(bg.global_black_list),
             dataType: "text",
             success: function(json) {
                 alert("上传成功");
