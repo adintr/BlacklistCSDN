@@ -52,6 +52,29 @@ function mark_blacks_on_topic() {
     })
 }
 
+function hide_ad_on_topic() {
+    $(".detailed").find('table').each(function (i, e) {
+        ele = $(e);
+        replayer = ele.find('.username a');
+        replayname = replayer.text();
+        if(replayname == "CSDN官网") {
+            ele.hide();
+        }
+    });
+    
+    $("iframe").hide();
+    $(".J_close").hide();
+    $("#com-quick-QRcode").hide();
+}
+
+function hide_ads() {
+    
+    if(location.href.indexOf('topics') != -1) {
+        hide_ad_on_topic();
+    }
+    
+}
+
 chrome.extension.sendRequest({command: "getBlackList"}, function(response) {
     global_black_list = response.data;
 
@@ -64,5 +87,8 @@ chrome.extension.sendRequest({command: "getBlackList"}, function(response) {
         mark_blacks_on_topic();
     }
 });
+
+hide_ads();
+
 
 

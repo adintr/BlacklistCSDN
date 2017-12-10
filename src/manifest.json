@@ -1,8 +1,8 @@
 {
   "name": "CSDNBlackList",
-  "version": "1.0",
+  "version": "1.1",
   "manifest_version": 2,
-  "description": "为 CSDN 提供黑名单功能",
+  "description": "为 CSDN 提供黑名单功能, 屏蔽广告",
   "permissions": [
     "tabs",
     "http://bbs.csdn.net/*",
