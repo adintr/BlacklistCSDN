@@ -57,7 +57,8 @@ function hide_ad_on_topic() {
         ele = $(e);
         replayer = ele.find('.username a');
         replayname = replayer.text();
-        if(replayname == "CSDN官网") {
+        if(replayname == "CSDN官网" ||
+           replayname == "CSDN官方推荐") {
             ele.hide();
         }
     });
