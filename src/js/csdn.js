@@ -66,6 +66,7 @@ function hide_ad_on_topic() {
     $("iframe").hide();
     $(".J_close").hide();
     $("#com-quick-QRcode").hide();
+    $(".post_body ul").hide();
 }
 
 function hide_ads() {
