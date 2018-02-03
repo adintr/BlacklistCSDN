@@ -58,15 +58,15 @@ function hide_ad_on_topic() {
         replayer = ele.find('.username a');
         replayname = replayer.text();
         if(replayname == "CSDN官网" ||
-           replayname == "CSDN官方推荐") {
+           replayname == "CSDN官方推荐" ||
+           replayname == "CSDN推荐") {
             ele.hide();
         }
     });
     
     $("iframe").hide();
-    $(".J_close").hide();
-    $("#com-quick-QRcode").hide();
-    $(".post_body ul").hide();
+    $("[data-mod=popu_592]").hide();
+    $("#bd_ad_2").hide();
 }
 
 function hide_ads() {
