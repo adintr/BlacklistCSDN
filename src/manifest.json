@@ -6,11 +6,12 @@
   "permissions": [
     "tabs",
     "http://bbs.csdn.net/*",
+    "https://bbs.csdn.net/*",
     "contextMenus"
   ],
 
   "externally_connectable": {
-    "matches": ["http://bbs.csdn.net/*"]
+    "matches": ["http://bbs.csdn.net/*", "https://bbs.csdn.net/*"]
   },
 
   "icons": {
@@ -19,7 +20,7 @@
 
   "content_scripts": [
     {
-      "matches": ["http://bbs.csdn.net/*"],
+      "matches": ["http://bbs.csdn.net/*", "https://bbs.csdn.net/*"],
       "js": ["js/jquery-3.2.0.min.js", "js/csdn.js"],
       "run_at": "document_idle"
     }
