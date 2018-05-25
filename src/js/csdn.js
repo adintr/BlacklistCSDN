@@ -67,6 +67,7 @@ function hide_ad_on_topic() {
     $("iframe").hide();
     $("[data-mod=popu_592]").hide();
     $("#bd_ad_2").hide();
+    $(".bigimg-wrapper").hide();
 }
 
 function hide_ads() {
