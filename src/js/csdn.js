@@ -68,6 +68,7 @@ function hide_ad_on_topic() {
     $("[data-mod=popu_592]").hide();
     $("#bd_ad_2").hide();
     $(".bigimg-wrapper").hide();
+    $($(".mod_topic_wrap").not(".post")[0]).hide();
 }
 
 function hide_ads() {
@@ -76,6 +77,14 @@ function hide_ads() {
         hide_ad_on_topic();
     }
     
+}
+
+function modify_style() {
+
+    if(location.href.indexOf('topics') == -1) {
+        $(".bbs_detail_wrap").css("width", "100%");
+    }
+
 }
 
 chrome.extension.sendRequest({command: "getBlackList"}, function(response) {
@@ -92,6 +101,7 @@ chrome.extension.sendRequest({command: "getBlackList"}, function(response) {
 });
 
 hide_ads();
+modify_style();
 
 
 
