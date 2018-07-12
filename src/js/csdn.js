@@ -83,6 +83,9 @@ function modify_style() {
 
     if(location.href.indexOf('topics') == -1) {
         $(".bbs_detail_wrap").css("width", "100%");
+        $(".forums_title").css("font-weight", "100");
+    } else {
+        $(".post_body").css("font-weight","100");
     }
 
 }
