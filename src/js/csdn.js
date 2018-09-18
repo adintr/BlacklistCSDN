@@ -52,6 +52,26 @@ function mark_blacks_on_topic() {
     })
 }
 
+var addCssRule = function() {
+    // 创建一个 style， 返回其 stylesheet 对象
+    function createStyleSheet() {
+        var style = document.createElement('style');
+        style.type = 'text/css';
+        document.head.appendChild(style);
+        return style.sheet;
+    }
+  
+    // 创建 stylesheet 对象
+    var sheet = createStyleSheet();
+  
+    // 返回接口函数
+    return function(selector, rules, index) {
+        index = index || 0;
+        sheet.insertRule(selector + "{" + rules + "}", index);
+        console.log(sheet);
+    }
+}();
+
 function hide_ad_on_topic() {
     $(".detailed").find('table').each(function (i, e) {
         var ele = $(e);
@@ -74,26 +94,6 @@ function hide_ad_on_topic() {
     $("#ad_pop").hide();
     $(".meau-gotop-box").hide();
 
-	var addCssRule = function() {
-	    // 创建一个 style， 返回其 stylesheet 对象
-	    function createStyleSheet() {
-	        var style = document.createElement('style');
-	        style.type = 'text/css';
-	        document.head.appendChild(style);
-	        return style.sheet;
-	    }
-	  
-	    // 创建 stylesheet 对象
-	    var sheet = createStyleSheet();
-	  
-	    // 返回接口函数
-	    return function(selector, rules, index) {
-	        index = index || 0;
-	        sheet.insertRule(selector + "{" + rules + "}", index);
-	        console.log(sheet);
-	    }
-	}();
-
 	addCssRule(".mediav_ad", "display: none;");
 }
 
@@ -110,6 +110,10 @@ function modify_style() {
     if(location.href.indexOf('topics') == -1) {
         $(".bbs_detail_wrap").css("width", "100%");
         $(".forums_title").css("font-weight", "100");
+        $(".forums_comm_t").hide();
+        $(".forums_com_b_r").hide();
+        $(".forums_tab").hide();
+        addCssRule(".forums_table_c .forums_tab_table tr th", "background: #069;")
     } else {
         $(".post_body").css("font-weight","100");
     }
