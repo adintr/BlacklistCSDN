@@ -19,7 +19,7 @@ function add_to_black(username) {
 
 function mark_blacks_on_formlist() {
     $(".content table").find("tr").each(function (index, e) {
-        ele = $(e);
+        var ele = $(e);
         quest = $(ele.find("td a")[3]);
         questuser = quest.text();
         if(is_black_user(questuser)){
@@ -34,7 +34,7 @@ function mark_blacks_on_formlist() {
 
 function mark_blacks_on_topic() {
     $(".detailed").find('table').each(function (i, e) {
-        ele = $(e);
+        var ele = $(e);
         replayer = ele.find('.username a');
         replayname = replayer.text();
         if(is_black_user(replayname)) {
@@ -54,7 +54,7 @@ function mark_blacks_on_topic() {
 
 function hide_ad_on_topic() {
     $(".detailed").find('table').each(function (i, e) {
-        ele = $(e);
+        var ele = $(e);
         replayer = ele.find('.username a');
         replayname = replayer.text();
         if(replayname == "CSDN官网" ||
@@ -69,6 +69,32 @@ function hide_ad_on_topic() {
     $("#bd_ad_2").hide();
     $(".bigimg-wrapper").hide();
     $($(".mod_topic_wrap").not(".post")[0]).hide();
+    $(".mediav_ad").hide();
+    $(".post_feed_box").hide();
+    $("#ad_pop").hide();
+    $(".meau-gotop-box").hide();
+
+	var addCssRule = function() {
+	    // 创建一个 style， 返回其 stylesheet 对象
+	    function createStyleSheet() {
+	        var style = document.createElement('style');
+	        style.type = 'text/css';
+	        document.head.appendChild(style);
+	        return style.sheet;
+	    }
+	  
+	    // 创建 stylesheet 对象
+	    var sheet = createStyleSheet();
+	  
+	    // 返回接口函数
+	    return function(selector, rules, index) {
+	        index = index || 0;
+	        sheet.insertRule(selector + "{" + rules + "}", index);
+	        console.log(sheet);
+	    }
+	}();
+
+	addCssRule(".mediav_ad", "display: none;");
 }
 
 function hide_ads() {
