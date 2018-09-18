@@ -68,7 +68,6 @@ var addCssRule = function() {
     return function(selector, rules, index) {
         index = index || 0;
         sheet.insertRule(selector + "{" + rules + "}", index);
-        console.log(sheet);
     }
 }();
 
