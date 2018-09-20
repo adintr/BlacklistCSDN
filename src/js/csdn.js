@@ -33,19 +33,20 @@ function mark_blacks_on_formlist() {
 }
 
 function mark_blacks_on_topic() {
-    $(".detailed").find('table').each(function (i, e) {
+    $(".mod_topic_wrap.post").each(function (i, e) {
         var ele = $(e);
-        replayer = ele.find('.username a');
+        replayer = ele.find('.nick_name a');
         replayname = replayer.text();
         if(is_black_user(replayname)) {
             replayer.css("color", "red");
             ele.find(".nickname").css("color", "red");
             ele.find('.data').css("background", "#c00000");
             ele.find('.post_body').css("background", "#c05050");
-            ele.find('.user_info').css("background", "#c09090");
+            ele.find('.topic_owner').css("background", "#c09090");
+            ele.find('.topic_l').css("background", "#c09090");
         }
         else {
-            ele.find('.user_info').append('<dd><button style="color:red;" id="btn_addblack_' + global_id + '" value="' + replayname + '">加入黑名单</button></dd>');
+            ele.find('.user_nick_name').append('<dd><button style="color:red;" id="btn_addblack_' + global_id + '" value="' + replayname + '">加入黑名单</button></dd>');
             $("#btn_addblack_" + global_id).click(function(){ add_to_black($(this).val()); });
             global_id++;
         }
@@ -92,8 +93,10 @@ function hide_ad_on_topic() {
     $(".post_feed_box").hide();
     $("#ad_pop").hide();
     $(".meau-gotop-box").hide();
+    $("#ad_pop_left").hide();
 
 	addCssRule(".mediav_ad", "display: none;");
+	addCssRule("#ad_pop_left", "display: none;");
 }
 
 function hide_ads() {
