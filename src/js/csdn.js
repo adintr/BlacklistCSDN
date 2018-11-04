@@ -88,12 +88,13 @@ function hide_ad_on_topic() {
     $("[data-mod=popu_592]").hide();
     $("#bd_ad_2").hide();
     $(".bigimg-wrapper").hide();
-    $($(".mod_topic_wrap").not(".post")[0]).hide();
     $(".mediav_ad").hide();
     $(".post_feed_box").hide();
     $("#ad_pop").hide();
     $(".meau-gotop-box").hide();
     $("#ad_pop_left").hide();
+
+    $(".post_recommend").hide();
 
 	addCssRule(".mediav_ad", "display: none;");
 	addCssRule("#ad_pop_left", "display: none;");
